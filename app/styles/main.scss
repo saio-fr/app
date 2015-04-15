@@ -1,0 +1,241 @@
+
+// Sass Imports
+// ----------------------------------------------------
+
+@import "reset";
+@import "fonts";
+@import "z-index";
+@import "globals";
+@import "mixins";
+@import "defaults";
+
+
+// Main container
+// ----------------------------------------------------
+
+.main-container {
+  margin: 0;
+  padding: 0;
+  height: calc(100% - 40px);
+  background: $background--base;
+  overflow-x: hidden;
+  border-radius: 3px 3px 0 0;
+}
+
+
+// Header
+// ----------------------------------------------------
+
+.app-header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: $height--mainHeader;
+  line-height: $height--mainHeader;
+  background: $background--header;
+  color: $color--header;
+  border-radius: 3px 3px 0 0;
+  user-select: none;
+}
+
+.app-header .header-title {
+  margin: 0;
+  padding: 0 0 0 $padding--offset;
+  height: $height--mainHeader;
+  font-size: $fontSize--header;
+  display: inline-block;
+  @include calc(width, "100% - " + $width--reducebutton);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Messages view
+// ----------------------------------------------------
+
+.messages-view {
+  width: 100%;
+  // height: calc(100% - 70px);
+  height: 100%;
+  padding: $padding--wrapper;
+  z-index: 2;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  overflow-y: auto;
+  user-select: initial;
+  backface-visibility: hidden;
+}
+
+.message {
+  margin-bottom: $margin--betweenMsgs;
+  position: relative;
+}
+
+// Messages of a different type following each other have a 
+// larger margin in between
+.message-visitor + .message-ai,
+.message-ai + .message-visitor {
+  margin-bottom: $margin--betweenMsgs;
+}
+.message-visitor + .message-visitor {
+  margin-top: -$margin--betweenMsgs + $margin--betweenSameMsgs;
+}
+.message-ai + .message-ai {
+  margin-top: -$margin--betweenMsgs + $margin--betweenSameMsgs;
+}
+// End logic for spacing between messages
+
+.message-ai {
+  float: left;
+  clear: both;
+}
+
+.message-visitor {
+   float: right;
+   clear: both;
+}
+
+.message-content {
+  margin: 0;
+  border-radius: 10px;
+  padding: $padding--msg;
+}
+
+.message-ai .message-content {
+  margin-left: 25px;
+  background: $background--msg;
+}
+.message-visitor .message-content {
+  margin-left: 0;
+  background: $background--visitorMsg;
+}
+
+.interlocutor-avatar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  border: solid 1px #cecece;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  overflow: hidden;
+  background: $background--base;
+  text-align: center;
+}
+
+.interlocutor-avatar-img {
+  margin: 0 auto;
+  display: inline-block;
+  width: 90%;
+}
+
+// Actions container (Will contain any action element fixed at the bottom)
+// ex: Search/discussion Input, Polls, Forms... & the SAIO branding
+// ----------------------------------------------------
+
+.actions-container {
+  position: absolute;
+  width: 100%;
+  min-height: 50px;
+  bottom: 0;
+  left: 0;
+  background: $background--base;
+}
+
+// Chat & AI Inputs
+.chat-input-component,
+.ai-input-component {
+  width: 100%;
+  padding: 0 $padding--offset;
+  margin-bottom: 25px;
+  display: block;
+  min-height: $height--inputBase;
+}
+
+.wrapper-input {
+  padding: 4px;
+  background: $background--widget-input;
+  border-radius: 3px;
+  height: 100%;
+  position: relative;
+  border: solid 1px rgb(255, 255, 255);
+}
+
+.textarea-input  {
+  display: inline-block;
+  padding: $padding--input;
+  width: calc(100% - 73px);
+  min-height: $height--inputBase;
+  max-height: 64px;
+  border: 1px solid rgba(181, 181, 181, 0.41);
+  background-color: $background--input;
+  color: $color--input;
+  resize: none !important;
+  border-radius: 2px;
+  line-height: 1;
+  vertical-align: bottom;
+}
+
+.chat-input:active,
+.chat-input:focus {
+  background: $background--input-active;
+}
+
+// Radio Inputs
+.choose-one-component {
+  list-style: none;
+  padding: 0;
+}
+
+.radio-input input[type="radio"] {
+  display: none;
+}
+
+.radio-input span:before {
+    font-family: "icons";
+    font-style: normal;
+    width: 1em;
+    height: 1em;
+    content: '\e822';
+    margin-right: .3em;
+}
+
+.radio-input input[type="radio"]:checked ~ span:before {
+    content: '\e824';
+}
+
+.choose-one-component {
+  border: solid 1px #cecece;
+  border-radius: 10px;
+  margin: 15px 15px 25px;
+}
+
+.wrapper-radio-input .radio-input {
+  display: inline-block;
+  padding: 9px 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.choose-one-component .wrapper-radio-input {
+  border-bottom: solid 1px #cecece;
+}
+
+.choose-one-component .wrapper-radio-input:last-child {
+  border-bottom: none;
+}
+
+// Footer (SAIO brandmark)
+// ----------------------------------------------------
+
+.saio-brandmark {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  font-size: $fontSize--saio;
+  color: $color--saio;
+}

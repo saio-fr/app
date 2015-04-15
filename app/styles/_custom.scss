@@ -1,0 +1,12 @@
+// custom.scss
+//
+// Here goes all properties that can be customized for a given client.
+ 
+ 
+// Colors
+// --------------------------------------------------
+
+// Always use rgb/rgba syntax to ensure homogeneity
+$client--brandColor: rgb(246, 195, 25);
+$client--msgColor:	 rgba($client--brandColor, .38);
+

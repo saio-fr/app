@@ -1,13 +1,11 @@
 'use strict';
 
 var gulp = require('gulp');
-var config = require('../config').indexHtml;
+var config = require('../config').fonts;
 var browserSync  = require('browser-sync');
-var rename = require('gulp-rename');
 
-gulp.task('compiledIndexHtml', function() {
+gulp.task('fonts', function() {
   return gulp.src(config.src)
-    .pipe(rename('index.html'))
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));
 });

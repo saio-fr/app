@@ -6,18 +6,20 @@ var src = './app';
 module.exports = {
 
   browserSync: {
-    // server: {
-    //   baseDir: dest
-    // }
-    server: 'false'
+    server: {
+      baseDir: dest
+    }
   },
 
   sass: {
     src: src + '/styles/**/*.{sass,scss}',
-    dest: dest,
+    dest: dest + '/css',
     settings: {
-      indentedSyntax: true, // Enable .sass syntax!
-      imagePath: 'images', // Used by the image-url helper
+      // Enable .sass syntax!
+      indentedSyntax: false,
+
+      // Used by the image-url helper
+      imagePath: 'images',
       errLogToConsole: true
     }
   },
@@ -32,42 +34,66 @@ module.exports = {
     dest: dest + '/templates'
   },
 
+  fonts: {
+    src: src + '/fonts/**',
+    dest: dest + '/fonts'
+  },
+
   indexHtml: {
-    src: src + '/templates/*.html',
+    src: src + '/templates/index.hbs',
     dest: dest
   },
 
   browserify: {
+    transform: ['hbsfy'],
+
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
       entries: src + '/scripts/vendors.js',
       dest: dest,
       outputName: 'vendors.js',
+
       // Additional file extentions to make optional
       extensions: ['.js'],
+      debug: false,
+
       // list of modules to make require-able externally
-      // require: ['jquery', 'backbone/node_modules/underscore']
-      // See https://github.com/greypants/gulp-starter/issues/87 for note about
-      // why this is 'backbone/node_modules/underscore' and not 'underscore'
-    },{
+      require:[
+        'jquery',
+        'backbone/node_modules/underscore',
+        'underscore',
+        'backbone',
+        'backbone.marionette',
+        'backbone.radio',
+        'handlebars',
+        'autobahn',
+        'autosize'
+      ]
+    },
+    {
       entries: src + '/scripts/app.js',
       dest: dest,
       outputName: 'app.js',
       extensions: ['.js'],
-      require: [
-        'jquery', 
-        'backbone/node_modules/underscore',
+
+      // See https://github.com/greypants/gulp-starter/issues/87 for note about
+      // why this is 'backbone/node_modules/underscore' and not 'underscore'
+      external: [
+        'jquery',
+        'underscore',
         'backbone',
-        'autobahn',
-        'Handlebars'
+        'backbone.marionette',
+        'backbone.radio',
+        'autosize'
       ]
-    },{
+    },
+    {
       entries: src + '/scripts/templates.js',
       dest: dest,
       outputName: 'templates.js',
       extensions: ['.hbs'],
-      require: ['Handlebars']
+      external: ['handlebars']
     }]
   },
 

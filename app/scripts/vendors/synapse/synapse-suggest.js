@@ -2,11 +2,13 @@
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(['$', 'Bloodhound'], function($, Bloodhound) {
-      return (root.synapse = root.Mn = factory(root, $, Bloodhound));
+      return (root.synapse = factory(root, $, Bloodhound));
     });
   } else if (typeof exports !== 'undefined') {
-    var $ = require('jquery'),
-        Bloodhound = require('./bloodhound');
+    var $ = require('jquery');
+    window.jQuery = $;
+    var Bloodhound = require('./bloodhound');
+    var Typeahead = require('./typeahead');
     module.exports = factory(root, $, Bloodhound);
   } else {
     root.synapse = factory(root, root.$, root.Bloodhound);
@@ -165,60 +167,60 @@
     this.setUpBloodhound();
 
     this.useSemanticMatching = function(query) {
-    var nbSpaces = (query.match(/ /g) || []).length
-    return nbSpaces >= this.semanticOffset;
-  };
+      var nbSpaces = (query.match(/ /g) || []).length
+      return nbSpaces >= this.semanticOffset;
+    };
 
     this.suggestionsMatcher = function() {
-    var synapse_suggest_instance = this;
-    return function findMatches(q, cb) {
+      var synapse_suggest_instance = this;
+      return function findMatches(q, cb) {
 
-      if (synapse_suggest_instance.useSemanticMatching(q)) {
-        var smartSearchCallback = function(userQuestion) {
-          return function(data, textStatus, jqXHR) {
-            if (textStatus == "success") {
-              //console.log(data.searchResults.searchResults);
-              //xml = $.parseXML(data.searchResults.searchResults);
-              //var results = [];
-              //$(xml).find('suggestion').each(function () {
-              //    results.push({ text: $(this).find('sentence').text(), answerId: $(this).attr('answerId'), source: 'remote' });
-              //});
-              //cb(results);
-              var resultsJson = JSON.parse(data.searchResults.searchResults);
-              console.log(JSON.stringify(resultsJson));
-              var results = []; 
-              if (resultsJson.QA.results.suggestions) {
-                $.each(resultsJson.QA.results.suggestions.suggestion, function(index, value) {
-                  results.push({ text: value.sentence, answerId: value['@answerId'], source: 'remote' });
-                });
+        if (synapse_suggest_instance.useSemanticMatching(q)) {
+          var smartSearchCallback = function(userQuestion) {
+            return function(data, textStatus, jqXHR) {
+              if (textStatus == "success") {
+                //console.log(data.searchResults.searchResults);
+                //xml = $.parseXML(data.searchResults.searchResults);
+                //var results = [];
+                //$(xml).find('suggestion').each(function () {
+                //    results.push({ text: $(this).find('sentence').text(), answerId: $(this).attr('answerId'), source: 'remote' });
+                //});
+                //cb(results);
+                var resultsJson = JSON.parse(data.searchResults.searchResults);
+                console.log(JSON.stringify(resultsJson));
+                var results = []; 
+                if (resultsJson.QA.results.suggestions) {
+                  $.each(resultsJson.QA.results.suggestions.suggestion, function(index, value) {
+                    results.push({ text: value.sentence, answerId: value['@answerId'], source: 'remote' });
+                  });
+                }
+
+                cb(results);
               }
-
-              cb(results);
-            }
+            };
           };
-        };
-        doSmartSearchWS(q, smartSearchCallback);
-      } else {
-        synapse_suggest_instance.bloodhound.get(q, function(suggestions) { cb(suggestions); });
-      }
+          doSmartSearchWS(q, smartSearchCallback);
+        } else {
+          synapse_suggest_instance.bloodhound.get(q, function(suggestions) { cb(suggestions); });
+        }
+      };
     };
-  };
 
     this.clearPrefetchCache = function() {
-    console.log("clear prefetching cache");
-    this.bloodhound.clearPrefetchCache();
-  };
+      console.log("clear prefetching cache");
+      this.bloodhound.clearPrefetchCache();
+    };
 
     this.setQuestionSelectedHandler = function(handler) {
-    $(this.selector).bind('typeahead:selected', function(event, suggestion, dataset) {
-      // do stuff if necessary
-      handler(suggestion);
-    });
-  };
+      $(this.selector).bind('typeahead:selected', function(event, suggestion, dataset) {
+        // do stuff if necessary
+        handler(suggestion);
+      });
+    };
 
     this.destroy = function() {
-    $(this.selector).typeahead('destroy');
-  };
+      $(this.selector).typeahead('destroy');
+    };
 
     this.addSuggestionsToInput = function(selector, strategy, semanticOffset) {
 
@@ -233,13 +235,13 @@
       this.setUpBloodhound();
 
       var params = {
-      name: 'questions',
-      displayKey: 'text',
-      templates: {
-        empty: this.emptyMessage,
-        suggestion: function(suggestion) { return '<span class="' + suggestion.source + '">' + suggestion.text + '</span>'; }
-      }
-    };
+        name: 'questions',
+        displayKey: 'text',
+        templates: {
+          empty: this.emptyMessage,
+          suggestion: function(suggestion) { return '<span class="' + suggestion.source + '">' + suggestion.text + '</span>'; }
+        }
+      };
 
       if (this.strategy == 'suggestions') {
         params.source = this.bloodhound.ttAdapter();
@@ -265,5 +267,5 @@
     };
   }
 
-};
+}));
 

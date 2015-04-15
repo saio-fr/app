@@ -1,5 +1,9 @@
-var Handlebars  = require('handlebars'),
-    autobahn    = require('autobahn'),
-    _           = require('underscore'),
-    $           = require('jquery'),
-    backbone    = require('backbone');
+var Handlebars          = require('handlebars');
+var autobahn            = require('autobahn');
+var $                   = require('jquery');
+var Backbone            = require('backbone');
+Backbone.$              = $;
+var _                   = require('underscore');
+var Mn                  = require('backbone.marionette');
+var synapse             = require('./vendors/synapse/synapse-suggest');
+var autosize            = require('autosize');

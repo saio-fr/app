@@ -8,25 +8,193 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="styles/main.css" type="text/css"/>
+<link rel="stylesheet" href="css/main.css" type="text/css" />
 
 </head>
 <body>
 
-	coucou
+  <div class="app-container">
 
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <header class="app-header group">
+      <h2 class="header-title">Posez nous vos questions</h2>
+      <button class="btn btn--nostyle right btn-reduce"><div class="btn-reduce-icon"></div></button>
+    </header>
 
-		ga('create', 'UA-58973224-1', 'auto');
-	</script>
+    <section class="main-container">
+      <div class="messages-view">
+        
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Bonjour, je m'appelle Lily. Je suis là pour vous aider. Vous pouvez me poser des question en rapport avec SAIO
+          </p>
+        </div>
 
-	<script src="scripts/bundle.js"></script>
-	<script src="scripts/templates.js"></script>
-	<script src="scripts/app.js"></script>
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Comment accéder au backoffice ?
+          </p>
+        </div>
 
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Je suis là pour vous aider.
+          </p>
+        </div>
+
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Ok, cool muf!
+          </p>
+        </div>
+        
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Vous pouvez me poser des question en rapport avec SAIO
+          </p>
+        </div>
+
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Comment accéder au backoffice ?
+          </p>
+        </div>      
+        
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Jean-claude souhaiterait avoir accès à quelques informations vous concernant pour pouvoir vous aider le mieux possible
+          </p>
+        </div>
+        
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Merci pour ces informations ! Je vous met en relation avec Jean-claude.
+          </p>
+        </div>
+
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Oui, mettez nous en relation
+          </p>
+        </div>
+        
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Comment accéder au backoffice ?
+          </p>
+        </div>
+
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Bonjour, je m'appelle Lily. Je suis là pour vous aider. Vous pouvez me poser des question en rapport avec SAIO
+          </p>
+        </div>
+
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Comment accéder au backoffice ?
+          </p>
+        </div>      
+        
+        <div class="message message-ai message-simple">
+          <figure class="interlocutor-avatar">
+            <img class="interlocutor-avatar-img" src="../img/avatar_ai.png" width="30px">
+          </figure>
+          <p class="message-content">
+            Bonjour, je m'appelle Lily. Je suis là pour vous aider. Vous pouvez me poser des question en rapport avec SAIO
+          </p>
+        </div>
+
+        <div class="message message-visitor message-simple">
+          <p class="message-content">
+            Comment accéder au backoffice ?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions-container">
+
+      <div class="chat-input-component" style="display: none">
+        <div class="wrapper-input group">
+          <textarea name="chat-input" class="textarea-input chat-input" size="undefined" rows="1" placeholder="Envoyer un message"></textarea>
+          <button class="btn btn-sendmsg btn--nostyle right">envoyer</button>
+        </div>
+      </div>
+
+      <div class="ai-input-component" style="display: none">
+        <div class="wrapper-input group">
+          <textarea name="ai-input" class="textarea-input ai-input" size="undefined" rows="1" placeholder="Me poser une question"></textarea>
+          <button class="btn btn-sendmsg btn--nostyle right">envoyer</button>
+        </div>
+      </div>
+
+      <ul class="choose-one-component">
+        <li class="wrapper-radio-input">
+            <label class="radio-input">
+                <input type="radio" name="choice" />
+                <span class="icon-circle-empty">Oui, mettez nous en relation</span>
+            </label>
+        </li>
+        <li class="wrapper-radio-input">
+            <label class="radio-input">
+                <input type="radio" name="choice" />
+                <span class="icon-circle-empty">Pas pour le moment</span>
+            </label>
+        </li>
+      </ul>
+
+      <!-- <form>
+        <label class="radio-input">
+          <input type="radio" name="choice" />
+          <i class="icon-circle-empty unchecked"></i>
+          <i class="icon-dot-circled checked"></i>
+          Oui, mettez nous en relation
+        </label>
+
+        <label class="radio-input">
+          <input type="radio" name="choice" />
+          <i class="icon-circle-empty unchecked"></i>
+          <i class="icon-dot-circled checked"></i>
+          Pas pour le moment
+        </label>
+      </form> -->
+
+      <footer class="saio-brandmark">
+        Créé par SAIO.
+      </footer>
+    
+    </div>
+  </div>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58973224-1', 'auto');
+  </script>
+
+  <script src="vendors.js"></script>
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

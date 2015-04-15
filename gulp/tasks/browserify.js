@@ -20,7 +20,7 @@ var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var config       = require('../config').browserify;
 var _            = require('underscore');
-var browserifyHandlebars = require('browserify-handlebars');
+var hbsfy        = require('browserify-handlebars');
 
 var browserifyTask = function(devMode) {
 

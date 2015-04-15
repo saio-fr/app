@@ -1,0 +1,123 @@
+
+// Helpers
+// ----------------------------------------------------
+
+.right {
+  float: right;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+// Global app styles
+// ----------------------------------------------------
+
+html,
+body,
+.app-container { // Fits the iframe width & height
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: $fontSize--base $font;
+  line-height: $lineHeight--base;
+}
+
+a {
+  color: $color--link;
+  font-weight: $weight--link;
+}
+
+::-webkit-input-placeholder {
+   color: $color--placeholder;
+   font-weight: $weight--normal;
+}
+:-moz-placeholder { /* Firefox 18- */
+   font-weight: $weight--normal;
+   color: $color--placeholder;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   font-weight: $weight--normal;
+   color: $color--placeholder;  
+}
+:-ms-input-placeholder {  
+   font-weight: $weight--normal;
+   color: $color--placeholder;  
+}
+::input-placeholder {
+   font-weight: $weight--normal;
+   color: $color--placeholder;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: none;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #929292;
+  border-radius: 5px;
+}
+
+// Buttons
+// ----------------------------------------------------
+
+.btn {
+  -webkit-appearance: none;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  border: solid 1px;
+}
+
+.btn--nostyle {
+  border: none;
+}
+
+.btn--disabled {
+  opacity: .5;
+}
+
+.btn-reduce {
+  height: 40px;
+  margin-right: 15px;
+  padding: 0;
+}
+
+.btn-reduce-icon {
+  width: 26px;
+  height: 6px;
+  border-radius: 2px;
+  vertical-align: middle;
+  background: $color--header;
+  margin: 0 auto;
+}
+
+.btn-sendmsg {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 5px 7px;
+  border-radius: 2px;
+  color: $color--action;
+}
+
+.btn-sendmsg:active,
+.btn-sendmsg:focus {
+  background: $background--base;
+}
+
+.btn-sendmsg:hover {
+  color: $color--action-em;
+}
+

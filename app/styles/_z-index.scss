@@ -1,0 +1,40 @@
+// z-index.scss
+//
+// Adapted from Medium.com's z-index scale (https://gist.github.com/fat/1f6da6b3bd0311a1f8a0) 
+// Z-index values should always be defined in z-index.scss. This
+// allows us to at a glance determine relative layers of our application and prevents bugs
+// arrising from arbitrary z-index values. Do not edit the z-index scale! Only add application
+// scoped z-index values.
+ 
+ 
+// Z-Index Scale (private vars)
+// --------------------------------------------------
+$zIndex-1:   100;
+$zIndex-2:   200;
+$zIndex-3:   300;
+$zIndex-4:   400;
+$zIndex-5:   500;
+$zIndex-6:   600;
+$zIndex-7:   700;
+$zIndex-8:   800;
+$zIndex-9:   900;
+$zIndex-10: 1000;
+ 
+ 
+// Z-Index Applications
+// --------------------------------------------------
+$zIndex-1--screenForeground:        $zIndex-1;
+
+$zIndex-7--nav:                     $zIndex-7;
+ 
+$zIndex-8--transitioningContainer:  $zIndex-8;
+$zIndex-8--panel:                   $zIndex-8;
+$zIndex-8--loadingBar:              $zIndex-8;
+$zIndex-8--zoomOverlay:             $zIndex-8;
+ 
+$zIndex-9--overlay:                 $zIndex-9;
+$zIndex-9--dialog:                  $zIndex-9;
+$zIndex-9--tooltip:                 $zIndex-9;
+ 
+$zIndex-10--dev:                    $zIndex-10;
+ 

@@ -1,0 +1,75 @@
+// globals.scss
+//
+// Describe all useful properties that will be used more than once
+// in the different saas files
+
+// Client specific globals:
+@import "custom";
+
+// Font Variables
+// --------------------------------------------------
+$font: "Lato", "Helvetica", "Arial", "sans-serif";
+
+// (Private)
+$weight--normal:    400;
+$weight--bold:      700;
+
+// (Public)
+$weight--header:    $weight--bold;
+$weight--base:      $weight--normal;
+$weight--link:      $weight--bold;
+
+$fontSize--base:    15px;
+$fontSize--header:  18px;
+$fontSize--saio:    12px;
+
+$lineHeight--base:  19px;
+$lineHeight--msg:   19px;
+
+
+// Colors (Always use rgb/rgba syntax to ensure homogeneity)
+// --------------------------------------------------
+$color--header:       rgb(255, 255, 255);
+$color--saio:         rgba(0, 0, 0, .6);
+$color--link:         rgb(74 , 144, 226); // Darker grey
+$color--placeholder:  rgba(0, 0, 0, .5);
+$color--input:        rgb(94, 94, 94);
+$color--action:       rgb(84, 84, 84);
+$color--action-em:    rgb(70, 70, 70);
+
+
+// Backgrounds (use rgb/rgba syntax as well)
+// --------------------------------------------------
+$background--base:          rgb(255, 255, 255);
+$background--msg:           $client--msgColor;
+$background--visitorMsg:    rgb(235, 235, 235);
+$background--header:        $client--brandColor;
+$background--widget-input:  rgba(232, 232, 232, 1);
+$background--input:         rgba(255, 255, 255, 0.8);
+$background--input-active:  rgba(255, 255, 255, 1);
+
+
+// Margins
+// --------------------------------------------------
+$margin--base:             15px;
+$margin--betweenMsgs:      12px;
+$margin--betweenSameMsgs:  2px;
+ 
+
+// Paddings
+// --------------------------------------------------
+$padding--offset:        15px;
+$padding--wrapper:       15px 11px 15px 15px;
+$padding--base:          9px;
+$padding--msg:           6px 9px;
+$padding--input:         6px 6px 6px 9px;
+$padding--msg--horiz:    $padding--msg;
+$padding--msg--vert:     $padding--msg;
+
+
+// Heights
+// --------------------------------------------------
+$height--inputBase:  30px;
+$height--mainHeader: 40px;
+
+$width--reducebutton: 44px;
